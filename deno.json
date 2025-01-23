@@ -1,0 +1,8 @@
+{
+  "name": "@cascades/markdown-parser",
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  },
+  "exports": "./main.ts",
+  "imports": {}
+}
