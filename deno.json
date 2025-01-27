@@ -1,8 +1,11 @@
 {
-  "name": "@cascades/markdown-parser",
-  "tasks": {
-    "dev": "deno run --watch main.ts"
-  },
-  "exports": "./main.ts",
-  "imports": {}
+	"name": "@cascades/markdown-parser",
+	"fmt": {
+		"indentWidth": 4,
+		"singleQuote": true,
+		"lineWidth": 150,
+		"useTabs": true
+	},
+	"imports": {},
+	"exports": "./main.ts"
 }
