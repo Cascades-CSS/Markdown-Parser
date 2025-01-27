@@ -6,6 +6,8 @@
 		"lineWidth": 150,
 		"useTabs": true
 	},
-	"imports": {},
+	"imports": {
+		"@std/expect": "jsr:@std/expect@^1.0.0"
+	},
 	"exports": "./main.ts"
 }
