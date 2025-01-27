@@ -1,5 +1,7 @@
 {
 	"name": "@cascades/markdown-parser",
+	"version": "0.1.0",
+	"license": "MIT",
 	"fmt": {
 		"indentWidth": 4,
 		"singleQuote": true,
@@ -9,5 +11,12 @@
 	"imports": {
 		"@std/expect": "jsr:@std/expect@^1.0.0"
 	},
-	"exports": "./main.ts"
+	"exports": "./main.ts",
+	"publish": {
+		"include": [
+			"LICENSE",
+			"README.md",
+			"main.ts"
+		]
+	}
 }
