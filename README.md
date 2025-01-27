@@ -4,6 +4,7 @@
 
 A rudimentary markdown parser.
 
+
 ### Usage
 
 ```ts
@@ -19,3 +20,18 @@ Produces the following HTML string:
 ```html
 Lorem ipsum <a href="https://example.com">dolor</a> sit amet.
 ```
+
+
+### Features
+
+The following Markdown features are supported:
+- Headings
+- Bold
+- Italics
+- Strikethrough
+- Inline code
+- Code blocks
+- Line breaks
+- Horizontal rules
+- Images
+- Links
