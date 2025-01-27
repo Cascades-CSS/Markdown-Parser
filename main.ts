@@ -1,5 +1,6 @@
 class Features {
 	public bold = true;
+	public breaks = true;
 	public headings = true;
 	public horizontalRule = true;
 	public italics = true;
@@ -42,6 +43,11 @@ function transformLinks(reference: Reference): void {
 	reference.markdown = reference.markdown.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2">$1</a>');
 }
 
+function transformBreaks(reference: Reference): void {
+	reference.markdown = reference.markdown.replace(/\s\s\n/g, '<br>');
+	reference.markdown = reference.markdown.replace(/\n\n/g, '<br>');
+}
+
 /**
  * Parse markdown into HTML.
  * @param markdown The markdown string.
@@ -61,6 +67,7 @@ export function parse(
 	if (features.strikethrough) transformStrikethrough(reference);
 	if (features.images) transformImages(reference);
 	if (features.links) transformLinks(reference);
+	if (features.breaks) transformBreaks(reference);
 
 	return reference.markdown;
 }

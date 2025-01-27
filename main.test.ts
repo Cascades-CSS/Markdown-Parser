@@ -154,3 +154,27 @@ Deno.test('Strikethrough', async (test) => {
 		expect(parse(markdown, config)).toBe(html);
 	});
 });
+
+Deno.test('Breaks', async (test) => {
+	const config = { ...allFeaturesDisabled, breaks: true };
+
+	await test.step('Isolated', () => {
+		const markdown1 = '  \n';
+		const html1 = '<br>';
+		expect(parse(markdown1, config)).toBe(html1);
+
+		const markdown2 = '\n\n';
+		const html2 = '<br>';
+		expect(parse(markdown2, config)).toBe(html2);
+	});
+
+	await test.step('Integrated', () => {
+		const markdown1 = 'lorem ipsum dolor  \n';
+		const html1 = 'lorem ipsum dolor<br>';
+		expect(parse(markdown1, config)).toBe(html1);
+
+		const markdown2 = 'lorem ipsum dolor\n\n';
+		const html2 = 'lorem ipsum dolor<br>';
+		expect(parse(markdown2, config)).toBe(html2);
+	});
+});
