@@ -1,7 +1,10 @@
 class Features {
+	public bold = true;
 	public headings = true;
 	public horizontalRule = true;
+	public italics = true;
 	public links = true;
+	public strikethrough = true;
 }
 
 interface Reference {
@@ -16,6 +19,18 @@ function transformHeadings(reference: Reference): void {
 
 function transformHorizontalRule(reference: Reference): void {
 	reference.markdown = reference.markdown.replace(/^---$/gm, '<hr>');
+}
+
+function transformBold(reference: Reference): void {
+	reference.markdown = reference.markdown.replace(/\*([^\*]+)\*/gm, '<strong>$1</strong>');
+}
+
+function transformItalics(reference: Reference): void {
+	reference.markdown = reference.markdown.replace(/_([^_]+)_/gm, '<em>$1</em>');
+}
+
+function transformStrikethrough(reference: Reference): void {
+	reference.markdown = reference.markdown.replace(/~([^~]+)~/gm, '<s>$1</s>');
 }
 
 function transformLinks(reference: Reference): void {
@@ -36,6 +51,9 @@ export function parse(
 
 	if (features.headings) transformHeadings(reference);
 	if (features.horizontalRule) transformHorizontalRule(reference);
+	if (features.bold) transformBold(reference);
+	if (features.italics) transformItalics(reference);
+	if (features.strikethrough) transformStrikethrough(reference);
 	if (features.links) transformLinks(reference);
 
 	return reference.markdown;
