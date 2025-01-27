@@ -155,6 +155,38 @@ Deno.test('Strikethrough', async (test) => {
 	});
 });
 
+Deno.test('Code Block', async (test) => {
+	const config = { ...allFeaturesDisabled, code: true };
+
+	await test.step('Isolated', () => {
+		const markdown = '```\nlorem\n```';
+		const html = '<pre><code>lorem</code></pre>';
+		expect(parse(markdown, config)).toBe(html);
+	});
+
+	await test.step('Integrated', () => {
+		const markdown = 'lorem ipsum\n```\ndolor sit amet\n```\nconsectetur adipisicing elit.';
+		const html = 'lorem ipsum\n<pre><code>dolor sit amet</code></pre>\nconsectetur adipisicing elit.';
+		expect(parse(markdown, config)).toBe(html);
+	});
+});
+
+Deno.test('Code Inline', async (test) => {
+	const config = { ...allFeaturesDisabled, code: true };
+
+	await test.step('Isolated', () => {
+		const markdown = '```lorem```';
+		const html = '<code>lorem</code>';
+		expect(parse(markdown, config)).toBe(html);
+	});
+
+	await test.step('Integrated', () => {
+		const markdown = 'lorem ipsum ```dolor sit amet``` consectetur adipisicing elit.';
+		const html = 'lorem ipsum <code>dolor sit amet</code> consectetur adipisicing elit.';
+		expect(parse(markdown, config)).toBe(html);
+	});
+});
+
 Deno.test('Breaks', async (test) => {
 	const config = { ...allFeaturesDisabled, breaks: true };
 

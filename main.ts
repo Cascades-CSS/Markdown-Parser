@@ -1,6 +1,7 @@
 class Features {
 	public bold = true;
 	public breaks = true;
+	public code = true;
 	public headings = true;
 	public horizontalRule = true;
 	public italics = true;
@@ -35,6 +36,11 @@ function transformStrikethrough(reference: Reference): void {
 	reference.markdown = reference.markdown.replace(/~([^~]+)~/gm, '<s>$1</s>');
 }
 
+function transformCode(reference: Reference): void {
+	reference.markdown = reference.markdown.replace(/```\n([^`]+)\n```/gm, '<pre><code>$1</code></pre>');
+	reference.markdown = reference.markdown.replace(/```([^`]+)```/gm, '<code>$1</code>');
+}
+
 function transformImages(reference: Reference): void {
 	reference.markdown = reference.markdown.replace(/!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1">');
 }
@@ -65,6 +71,7 @@ export function parse(
 	if (features.bold) transformBold(reference);
 	if (features.italics) transformItalics(reference);
 	if (features.strikethrough) transformStrikethrough(reference);
+	if (features.code) transformCode(reference);
 	if (features.images) transformImages(reference);
 	if (features.links) transformLinks(reference);
 	if (features.breaks) transformBreaks(reference);
