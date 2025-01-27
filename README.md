@@ -1,4 +1,6 @@
-# Markdown-Parser
+# Markdown Parser
+
+[![Tests](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/deno-test.yml/badge.svg)](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/deno-test.yml)
 
 A rudimentary markdown parser.
 
