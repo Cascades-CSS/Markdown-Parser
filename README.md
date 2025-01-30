@@ -1,6 +1,6 @@
 # Markdown Parser
 
-[![Tests](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/test.yml/badge.svg)](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/test.yml)
+[![JSR Version](https://img.shields.io/jsr/v/%40cascades/markdown-parser)](https://jsr.io/@cascades/markdown-parser) [![Tests](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/test.yml/badge.svg)](https://github.com/Cascades-CSS/Markdown-Parser/actions/workflows/test.yml)
 
 A rudimentary markdown parser.
 
